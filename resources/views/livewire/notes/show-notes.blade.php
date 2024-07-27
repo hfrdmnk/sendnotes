@@ -12,7 +12,7 @@ new class extends Component {
     }
 }; ?>
 
-<div class="space-y-2">
+<div class="flex flex-col gap-4">
     @if ($notes->isEmpty())
         <div class="text-center">
             <p class="text-xl font-bold">No notes yet</p>
@@ -20,6 +20,9 @@ new class extends Component {
             <x-button primary icon-right="plus" class="mt-6" :href="route('notes.create')" wire:navigate>Create note</x-button>
         </div>
     @else
+        <div>
+            <x-button primary icon-right="plus" class="mt-6" :href="route('notes.create')" wire:navigate>Create note</x-button>
+        </div>
         <div class="grid grid-cols-2 gap-4 mt-12">
             @foreach ($notes as $note)
                 <x-card wire:key='{{ $note->id }}'>
