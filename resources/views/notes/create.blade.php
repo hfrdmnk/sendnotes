@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-2xl mx-auto">
+        <div class="max-w-2xl px-4 mx-auto lg:px-8">
             <div class="overflow-hidden sm:rounded-lg">
                 <div class="p-6 space-y-6 text-gray-900">
                     <x-button secondary outline icon-left="arrow-left" :href="route('notes.index')" icon="arrow-left"
