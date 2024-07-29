@@ -7,6 +7,7 @@ new class extends Component {
     public function delete($id)
     {
         $note = Auth::user()->notes()->find($id);
+        $this->authorize('delete', $note);
         $note->delete();
     }
 
