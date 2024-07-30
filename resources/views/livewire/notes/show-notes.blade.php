@@ -44,7 +44,7 @@ new class extends Component {
                     </div>
                     <div class="flex items-end justify-between gap-1 pt-4 mt-auto">
                         <p class="text-sx">Recipient: <span class="font-semibold">{{ $note->recipient }}</span></p>
-                        <div>
+                        <div class="shrink-0">
                             <x-mini-button rounded outline secondary icon="eye"></x-mini-button>
                             <x-mini-button rounded outline secondary icon="trash"
                                 wire:click="delete('{{ $note->id }}')" wire:confirm="Are you sure?"></x-mini-button>
