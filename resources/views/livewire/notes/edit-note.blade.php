@@ -43,6 +43,8 @@ new #[Layout('layouts.app')] class extends Component {
             'send_date' => $validated['noteSendDate'],
             'is_published' => $validated['noteIsPublished'],
         ]);
+
+        $this->dispatch('note-saved');
     }
 }; ?>
 
@@ -66,6 +68,7 @@ new #[Layout('layouts.app')] class extends Component {
                 <x-button secondary type="submit" spinner>Save Note</x-button>
                 <x-button flat :href="route('notes.index')" wire:navigate>Back</x-button>
             </div>
+            <x-action-message on="note-saved" />
             <x-errors />
         </form>
     </div>
