@@ -48,9 +48,13 @@ new class extends Component {
                 <x-card wire:key='{{ $note->id }}'>
                     <div class="flex justify-between">
                         <div class="flex flex-col gap-1">
-                            <a href="{{ route('notes.edit', $note) }}"
-                                class="text-xl font-bold hover:text-blue-500 hover:underline"
-                                wire:navigate>{{ $note->title }}</a>
+                            @can('update', $note)
+                                <a href="{{ route('notes.edit', $note) }}"
+                                    class="text-xl font-bold hover:text-blue-500 hover:underline"
+                                    wire:navigate>{{ $note->title }}</a>
+                            @else
+                                <p class="text-xl font-bold text-gray-400">{{ $note->title }}</p>
+                            @endcan
                             <p class="text-sm">{{ Str::limit($note->body, 50) }}</p>
                         </div>
                         <div class="text-gray-500 text-sx">{{ Carbon::parse($note->send_date)->format('d/m/Y') }}</div>
@@ -58,7 +62,9 @@ new class extends Component {
                     <div class="flex items-end justify-between gap-1 pt-4 mt-auto">
                         <p class="text-sx">Recipient: <span class="font-semibold">{{ $note->recipient }}</span></p>
                         <div class="shrink-0">
-                            <x-mini-button rounded outline secondary icon="eye"></x-mini-button>
+                            @can('update', $note)
+                                <x-mini-button rounded outline secondary icon="eye" :href="route('notes.edit', $note)"></x-mini-button>
+                            @endcan
                             <x-mini-button rounded outline secondary icon="trash"
                                 wire:click="delete('{{ $note->id }}')" wire:confirm="Are you sure?"></x-mini-button>
                         </div>
