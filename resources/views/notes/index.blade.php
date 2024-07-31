@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="px-4 mx-auto max-w-7xl lg:px-8">
-            <livewire:notes.show-notes />
+            <livewire:notes.show-notes lazy />
         </div>
     </div>
 </x-app-layout>
