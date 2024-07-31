@@ -12,8 +12,14 @@ new class extends Component {
         $this->note = $note;
         $this->heartCount = $note->heart_count;
     }
+
+    public function increaseHeartCount()
+    {
+        $this->heartCount++;
+        $this->note->update(['heart_count' => $this->heartCount]);
+    }
 }; ?>
 
 <div>
-    <x-button xs wire:click='' rose icon="heart" spinner>{{ $heartCount }}</x-button>
+    <x-button xs wire:click='increaseHeartCount' rose icon="heart" spinner>{{ $heartCount }}</x-button>
 </div>
